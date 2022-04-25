@@ -9,7 +9,7 @@
         :key="index" 
         class="contentGrid"
         :style="(day.monthDay === 1) ? {'grid-column-start': day.weekDay + 1} : ''"
-        @click="scheduleDay(day.monthDay)"
+        @click="scheduleReminder(day.monthDay)"
       >
         {{day.monthDay}}
       </div>
@@ -51,8 +51,8 @@ export default {
         weekDay = (weekDay === 6) ? 0 : weekDay++;
       }
     },
-    scheduleDay(day) {
-      console.log('cliquei no dia', day)
+    scheduleReminder(day) {
+      console.log('clicked at day: ', day)
     }
   }
 }
