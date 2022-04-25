@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <p class="name">
     {{formattedMonthName()}}
-  </div>
+  </p>
+  <button @click="openScheduleReminder">New reminder</button>
 </template>
 
 <script>
@@ -13,10 +14,16 @@ export default {
   methods: {
     formattedMonthName() {
       return this.month.charAt(0).toUpperCase() + this.month.slice(1);
+    },
+    openScheduleReminder() {
+      this.$store.dispatch('setScheduleWindowState', true);
     }
   }
 }
 </script>
 
 <style scoped>
+.name {
+  font-size: 1.5rem;
+}
 </style>
