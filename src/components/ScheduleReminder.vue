@@ -9,11 +9,11 @@
     <div class="horizontal-line" />
 
     <p>Title: </p>
-    <input type="text" v-model="reminder.title" maxlength="20"/>
+    <input type="text" id="title" v-model="reminder.title" maxlength="20"/>
     {{inputError}}
 
     <p>Description: </p>
-    <input type="text" v-model="reminder.description" maxlength="30"/>
+    <input type="text" id="description" v-model="reminder.description" maxlength="30"/>
     {{inputError}}
     <div class="horizontal-line" />
 
