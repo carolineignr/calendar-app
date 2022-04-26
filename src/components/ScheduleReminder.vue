@@ -21,9 +21,9 @@
     {{reminder.date}}
     <Datepicker v-model="reminder.date" />
 
-    <!-- <p>Where?</p>
+    <p>Where?</p>
     {{reminder.location?.city}}
-    <input type="text" v-model="reminder.city" @change="findCities"/> -->
+    <input type="text" v-model="reminder.city" id="autocomplete" disabled/>
     <div class="horizontal-line" />
 
     <div>
@@ -50,6 +50,10 @@ export default {
   },
   beforeMount() {
     this.reminder = this.existentReminder;
+  },
+  mounted() {
+    // eslint-disable-next-line no-undef
+    new google.maps.places.Autocomplete(document.getElementById("autocomplete"));
   },
   methods: {
     saveSchedule() {
@@ -82,16 +86,7 @@ export default {
     },
     closeWindow() {
       this.$store.state.openScheduleWindow = false;
-    },
-    // findCities() {
-    //   const url = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=flo&key=AIzaSyA-UR9pq60I5MDmoxblbIHR7ZtUK8h2lZ4';
-    //   const config = {
-    //     method: 'GET',
-    //     headers: { 
-    //     }
-    //   };
-    //   fetch(url, config).then(res => console.log(res))
-    // }
+    }
   },
   computed: {
     monthlyDays() {
