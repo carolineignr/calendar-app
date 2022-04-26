@@ -1,24 +1,18 @@
 # Calendar App
 
-## Project setup
+This is a calendar app developed using Vue 3 and Vuex to state management. 
+
+## Steps to run this project
+
+### Install dependecies
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Run the app
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Open your browser in **localhost:8080** and you'll be able to use the app
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
