@@ -22,8 +22,8 @@
     <Datepicker v-model="reminder.date" />
 
     <p>Where?</p>
-    {{reminder.location?.city}}
-    <input type="text" v-model="reminder.city" id="autocomplete" disabled/>
+    {{reminder.city}}
+    <input type="text" id="autocomplete"/>
     <div class="horizontal-line" />
 
     <div>
@@ -45,7 +45,8 @@ export default {
   data() {
     return {
       reminder: {},
-      inputError: null
+      inputError: null,
+      city: ''
     }
   },
   beforeMount() {
@@ -53,13 +54,14 @@ export default {
   },
   mounted() {
     // eslint-disable-next-line no-undef
-    new google.maps.places.Autocomplete(document.getElementById("autocomplete"));
+    this.city = new google.maps.places.Autocomplete(document.getElementById("autocomplete"));
   },
   methods: {
     saveSchedule() {
       try {
         const chosenDay = this.getDayToUpdate();
         this.reminder.color = this.reminder.color || '#000';
+        this.reminder.city = this.city.getPlace().formatted_address;
 
         if (this.reminder.id >= 0) {
           let existentReminder = chosenDay.schedules
@@ -73,6 +75,7 @@ export default {
           chosenDay.schedules = [...chosenDay.schedules, this.reminder];
         }
 
+        console.log(this.reminder);
         this.$store.dispatch('setMonthlyDays', this.monthlyDays);
         this.$store.dispatch('setCurrentReminder', {})
       } catch (e) {
